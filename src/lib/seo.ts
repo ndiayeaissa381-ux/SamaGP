@@ -1,0 +1,51 @@
+const ROUTES: { test: (path: string) => boolean; title: string }[] = [
+  { test: (p) => p === '/', title: 'Envoyer un colis entre le Sénégal et le monde' },
+  { test: (p) => p === '/rechercher', title: 'Rechercher une offre de transport' },
+  { test: (p) => p.startsWith('/offres/'), title: "Détail de l'offre" },
+  { test: (p) => p === '/suivi', title: 'Suivre un colis' },
+  { test: (p) => p === '/comment-ca-marche', title: 'Comment ça marche' },
+  { test: (p) => p === '/devenir-gp', title: 'Devenir GP / Voyageur' },
+  { test: (p) => p === '/devenir-transitaire', title: 'Devenir transitaire' },
+  { test: (p) => p === '/a-propos', title: 'À propos' },
+  { test: (p) => p === '/faq', title: 'Questions fréquentes' },
+  { test: (p) => p === '/contact', title: 'Contact' },
+  { test: (p) => p === '/login', title: 'Connexion' },
+  { test: (p) => p === '/register', title: 'Créer un compte' },
+  { test: (p) => p === '/register/particulier', title: 'Inscription particulier' },
+  { test: (p) => p === '/register/gp', title: 'Inscription GP / Voyageur' },
+  { test: (p) => p === '/register/transitaire', title: 'Inscription transitaire' },
+  { test: (p) => p === '/forgot-password', title: 'Mot de passe oublié' },
+  { test: (p) => p === '/reset-password', title: 'Réinitialiser le mot de passe' },
+  { test: (p) => p === '/dashboard', title: 'Mon tableau de bord' },
+  { test: (p) => p === '/expedition/nouvelle', title: 'Nouvelle expédition' },
+  { test: (p) => p === '/expedition/recap', title: "Récapitulatif de l'expédition" },
+  { test: (p) => p === '/expedition/confirmation', title: 'Expédition confirmée' },
+  { test: (p) => p === '/colis', title: 'Mes colis' },
+  { test: (p) => p.startsWith('/colis/'), title: 'Suivi du colis' },
+  { test: (p) => p === '/gp', title: 'Tableau de bord GP' },
+  { test: (p) => p === '/gp/voyages', title: 'Mes voyages' },
+  { test: (p) => p === '/gp/voyages/nouveau', title: 'Publier un voyage' },
+  { test: (p) => p === '/gp/demandes', title: 'Demandes reçues' },
+  { test: (p) => p === '/transitaire', title: 'Tableau de bord transitaire' },
+  { test: (p) => p === '/transitaire/offres', title: 'Mes offres' },
+  { test: (p) => p === '/transitaire/offres/nouveau', title: 'Publier une offre' },
+  { test: (p) => p === '/transitaire/demandes', title: 'Demandes reçues' },
+  { test: (p) => p === '/transitaire/expeditions', title: 'Expéditions' },
+  { test: (p) => p === '/profile', title: 'Mon profil' },
+  { test: (p) => p === '/settings', title: 'Paramètres' },
+  { test: (p) => p === '/notifications', title: 'Notifications' },
+  { test: (p) => p === '/admin', title: 'Administration' },
+  { test: (p) => p === '/admin/utilisateurs', title: 'Utilisateurs' },
+  { test: (p) => p === '/admin/verifications', title: 'Vérifications' },
+  { test: (p) => p === '/admin/offres', title: 'Offres' },
+  { test: (p) => p === '/admin/colis', title: 'Colis' },
+  { test: (p) => p === '/admin/signalements', title: 'Signalements' },
+  { test: (p) => p === '/admin/statistiques', title: 'Statistiques' },
+]
+
+export const SITE_NAME = 'SAMA GP'
+
+export function titleForPath(pathname: string): string {
+  const match = ROUTES.find((route) => route.test(pathname))
+  return match ? match.title : 'Page introuvable'
+}

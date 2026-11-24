@@ -1,0 +1,8 @@
+import { useEffect, useState } from 'react'
+import { subscribe } from './lib/db'
+
+export function useDB(): number {
+  const [version, setVersion] = useState(0)
+  useEffect(() => subscribe(() => setVersion((v) => v + 1)), [])
+  return version
+}
